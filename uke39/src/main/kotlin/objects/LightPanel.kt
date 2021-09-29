@@ -6,7 +6,7 @@ class LightPanel(switchCount: Int) {
 
     init {
         for (i in 1..switchCount) {
-            val switch = LightSwitch()
+            val switch = LightSwitch(on = false)
             switches.add(switch)
         }
     }
