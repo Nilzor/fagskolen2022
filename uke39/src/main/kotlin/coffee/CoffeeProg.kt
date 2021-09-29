@@ -22,7 +22,7 @@ fun presentMenu() {
     for ((index, coffee) in coffees.withIndex()) {
         print("$counter: $coffee")
 
-        if (numberOfCoffees[index] < 1) {
+        if (coffee.capacity < 1) {
             print(" (TOMT)")
         }
 
@@ -37,7 +37,7 @@ fun takeOrder() {
             val orderNumber = readLine()!!.toInt()
 
             if (orderNumber in 1..coffees.size) {
-                if (numberOfCoffees[orderNumber - 1] < 1) {
+                if (coffees[orderNumber - 1].capacity < 1) {
                     println("Det er dessverre tomt for denne kaffen.")
                     continue
                 }
@@ -55,7 +55,7 @@ fun takeOrder() {
 
 fun prepareCoffee(orderNumber: Int) {
     val selectedCoffee = coffees[orderNumber - 1]
-    numberOfCoffees[orderNumber - 1]--
+    selectedCoffee.capacity--
 
     val wantDouble: Boolean
     while (true) {
@@ -74,12 +74,12 @@ fun prepareCoffee(orderNumber: Int) {
     }
 
     if (wantDouble) {
-        println("Du har valgt dobbel $selectedCoffee. Den blir nå laget!")
+        println("Du har valgt dobbel ${selectedCoffee.name}. Den blir nå laget!")
     } else {
-        println("Du har valgt enkel $selectedCoffee. Den blir nå laget!")
+        println("Du har valgt enkel ${selectedCoffee.name}. Den blir nå laget!")
     }
 
-    serveCoffee(selectedCoffee)
+    serveCoffee(selectedCoffee.name)
 }
 
 fun serveCoffee(selectedCoffee: String) {
