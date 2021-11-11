@@ -1,22 +1,8 @@
 package inheritance.animal
 
-open class Animal {
-    var legCount: Int = -1
+open class Animal
 
-    open fun speak() {
-        println("I don't know how to speak")
-    }
-}
-
-class Cat : Animal() {
-    init {
-        legCount = 4
-    }
-
-    override fun speak() {
-        println("Meow")
-    }
-}
+class Cat : Animal()
 
 class Snake : Animal() {
     var hasShedSkin: Boolean = false
