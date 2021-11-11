@@ -1,4 +1,4 @@
-package inheritance.animal
+package inheritance.plain
 
 fun main() {
     /** Below: Use the animal child classes directly */

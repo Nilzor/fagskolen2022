@@ -6,9 +6,11 @@ class StoreItem(
     var quantity: Int
 ) {
     fun isEmpty(): Boolean  {
-        return false
+        return quantity == 0
     }
+
     fun getStoreRepresentation(): String {
-        return ""
+        val itemText = groceryItem.getItemRepresentation()
+        return "$itemText: $pricePerItem kr. Antall: $quantity"
     }
 }

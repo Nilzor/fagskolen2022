@@ -1,5 +1,8 @@
-package inheritance.animal
+package inheritance.plain
 
+/**
+ * An anmial class defined without using constructors or "abstract"
+ */
 open class Animal {
     var legCount: Int = -1
 
@@ -29,4 +32,3 @@ class Snake : Animal() {
         println("Ssssssssssss")
     }
 }
-
