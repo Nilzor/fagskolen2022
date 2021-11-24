@@ -1,0 +1,16 @@
+{
+  "navn": "Harald Rex",
+  "alder": 84,
+  "erMann": true,
+  "barn": [
+    "Märtha Louise",
+    "Haakon Magnus"
+  ],
+  "bosted": {
+    "adresse": "Drammensveien 1",
+    "type:": "Slott"
+  }
+}
+
+
+

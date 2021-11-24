@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Resources</string>
+    <string name="title">Grønnsaksappen</string>
+    <string name="bodytext">Agurk er godt</string>
+</resources>
