@@ -2,9 +2,9 @@ package com.fagskolen.mvvm
 
 import androidx.lifecycle.ViewModel
 
-class FilmViewModel(
-    val title: String,
-    val releaseYear: String,
-    val ageRating: String,
-    val duration: String,
-) : ViewModel()
+class FilmViewModel() : ViewModel() {
+    var title: String = ""
+    var releaseYear: String = ""
+    var ageRating: String = ""
+    var duration: String = ""
+}
