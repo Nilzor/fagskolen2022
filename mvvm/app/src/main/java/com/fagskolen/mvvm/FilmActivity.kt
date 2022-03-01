@@ -1,26 +1,20 @@
 package com.fagskolen.mvvm
 
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
+import com.fagskolen.mvvm.databinding.ActivityFilmBinding
 
 class FilmActivity : AppCompatActivity(), ChangeListener {
     private val filmViewModel: FilmViewModel by viewModels()
 
-    private lateinit var progressBar: ProgressBar
-    private lateinit var filmContent: ConstraintLayout
+    private lateinit var binding: ActivityFilmBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_film)
+        binding = ActivityFilmBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         supportActionBar?.hide()
-
-        progressBar = findViewById(R.id.progressBar)
-        filmContent = findViewById(R.id.filmContent)
 
         filmViewModel.onChange = this
         filmViewModel.loadDataIfNeeded()
@@ -28,15 +22,15 @@ class FilmActivity : AppCompatActivity(), ChangeListener {
     }
 
     private fun show(filmViewModel: FilmViewModel) {
-        findViewById<TextView>(R.id.title).text = filmViewModel.title
-        findViewById<TextView>(R.id.year).text = filmViewModel.releaseYear
-        findViewById<TextView>(R.id.ageRating).text = filmViewModel.ageRating
-        findViewById<TextView>(R.id.duration).text = filmViewModel.duration
+        binding.title.text = filmViewModel.title
+        binding.year.text = filmViewModel.releaseYear
+        binding.ageRating.text = filmViewModel.ageRating
+        binding.duration.text = filmViewModel.duration
         if (filmViewModel.posterResource != 0) {
-            findViewById<ImageView>(R.id.posterImage).setImageResource(filmViewModel.posterResource)
+            binding.posterImage.setImageResource(filmViewModel.posterResource)
         }
-        progressBar.visibility = filmViewModel.progressBarVisibility
-        filmContent.visibility = filmViewModel.filmContentVisibility
+        binding.progressBar.visibility = filmViewModel.progressBarVisibility
+        binding.filmContent.visibility = filmViewModel.filmContentVisibility
     }
 
     override fun onDataChanged() {
