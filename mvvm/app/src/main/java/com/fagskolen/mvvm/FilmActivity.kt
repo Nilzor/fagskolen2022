@@ -2,6 +2,7 @@ package com.fagskolen.mvvm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import org.w3c.dom.Text
@@ -25,5 +26,8 @@ class FilmActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.year).text = filmViewModel.releaseYear
         findViewById<TextView>(R.id.ageRating).text = filmViewModel.ageRating
         findViewById<TextView>(R.id.duration).text = filmViewModel.duration
+        if (filmViewModel.posterResource != 0) {
+            findViewById<ImageView>(R.id.posterImage).setImageResource(filmViewModel.posterResource)
+        }
     }
 }

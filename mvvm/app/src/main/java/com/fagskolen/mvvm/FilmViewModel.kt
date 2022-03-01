@@ -8,5 +8,5 @@ class FilmViewModel() : ViewModel() {
     var duration: String = ""
     var ageRating: String = ""
     var releaseYear: String = ""
-
+    var posterResource: Int = 0
 }

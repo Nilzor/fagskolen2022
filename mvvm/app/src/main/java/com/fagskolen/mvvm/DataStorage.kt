@@ -9,7 +9,8 @@ object DataStorage {
             ageRating = "12A",
             releaseDate = Date(121, 11, 13),
             durationMinutes = 148,
-            description = "Her er beskrivelsen"
+            description = "Her er beskrivelsen",
+            posterResource = R.drawable.spiderman
         )
     }
 }

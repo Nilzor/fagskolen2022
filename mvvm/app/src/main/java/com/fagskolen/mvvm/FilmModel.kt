@@ -8,4 +8,5 @@ class FilmModel(
     val ageRating: String,
     val durationMinutes: Long,
     val description: String,
+    var posterResource: Int,
 )

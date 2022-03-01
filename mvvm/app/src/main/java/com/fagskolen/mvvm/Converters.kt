@@ -9,5 +9,6 @@ object Converters {
         filmViewModel.releaseYear = filmModel.releaseDate.year.toString()
         filmViewModel.ageRating = filmModel.ageRating
         filmViewModel.duration = "${hours}h ${minutes}m"
+        filmViewModel.posterResource = filmModel.posterResource
     }
 }
