@@ -3,7 +3,6 @@ package com.fagskolen.mvvm
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.*
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.Serializable
 
@@ -40,9 +39,7 @@ class FilmViewModel() : ViewModel(), Serializable {
             progressBarVisibility = View.VISIBLE
             filmContentVisibility = View.GONE
 
-            delay(2000) // Vi later som om datakilden er treg
-
-            val filmModel = DataStorage.loadFilm()
+            val filmModel = DataStorage.loadFilm(1)
             Converters.filmModelToViewModel(filmModel, this@FilmViewModel)
 
             progressBarVisibility = View.GONE
