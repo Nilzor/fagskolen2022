@@ -8,6 +8,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -26,7 +27,7 @@ class FilmActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBar)
         filmContent = findViewById(R.id.filmContent)
 
-        filmViewModel = FilmViewModel()
+        filmViewModel = ViewModelProvider(this).get(FilmViewModel::class.java)
         loadDataIfNeeded()
     }
 
