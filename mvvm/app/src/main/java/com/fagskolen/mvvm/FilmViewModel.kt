@@ -5,9 +5,10 @@ import android.view.View
 import androidx.lifecycle.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.Serializable
 
 
-class FilmViewModel() : ViewModel() {
+class FilmViewModel() : ViewModel(), Serializable {
     var title: String = ""
     var duration: String = ""
     var ageRating: String = ""
@@ -17,6 +18,7 @@ class FilmViewModel() : ViewModel() {
     var progressBarVisibility: Int = View.GONE
     var filmContentVisibility: Int = View.GONE
 
+    @Transient
     var onChange: ChangeListener? = null
 
     /** Returns true if the ViewModel is loaded and has data */
