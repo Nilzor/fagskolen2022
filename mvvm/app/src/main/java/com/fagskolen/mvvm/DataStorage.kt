@@ -6,9 +6,10 @@ object DataStorage {
     fun loadFilm(): FilmModel {
         return FilmModel(
             title = "Spider-Man: No Way Home",
-            ageRating = "12",
-            releaseDate = Date(2021, 11, 13),
-            durationMinute = 148
+            ageRating = "12A",
+            releaseDate = Date(121, 11, 13),
+            durationMinutes = 148,
+            description = "Her er beskrivelsen"
         )
     }
 }

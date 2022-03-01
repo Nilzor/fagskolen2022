@@ -4,7 +4,8 @@ import java.util.*
 
 class FilmModel(
     val title: String,
-    val ageRating: String,
     val releaseDate: Date,
-    val durationMinute: Long,
+    val ageRating: String,
+    val durationMinutes: Long,
+    val description: String,
 )
