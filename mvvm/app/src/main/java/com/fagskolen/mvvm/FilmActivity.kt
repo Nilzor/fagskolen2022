@@ -1,11 +1,12 @@
 package com.fagskolen.mvvm
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
-import org.w3c.dom.Text
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class FilmActivity : AppCompatActivity() {
     lateinit var filmViewModel: FilmViewModel
@@ -15,10 +16,28 @@ class FilmActivity : AppCompatActivity() {
         setContentView(R.layout.activity_film)
         supportActionBar?.hide()
 
-        val filmModel = DataStorage.loadFilm()
         filmViewModel = FilmViewModel()
-        Converters.filmModelToViewModel(filmModel, filmViewModel)
-        show(filmViewModel)
+        loadDataIfNeeded()
+    }
+
+
+    private fun loadDataIfNeeded() {
+        if (!filmViewModel.isLoaded()) {
+            loadDataInBackground()
+        } else {
+            show(filmViewModel)
+        }
+    }
+
+    private fun loadDataInBackground() {
+        lifecycleScope.launch {
+            delay(2000) // Vi later som om datakilden er treg
+
+            val filmModel = DataStorage.loadFilm()
+            Converters.filmModelToViewModel(filmModel, filmViewModel)
+
+            show(filmViewModel)
+        }
     }
 
     private fun show(filmViewModel: FilmViewModel) {
