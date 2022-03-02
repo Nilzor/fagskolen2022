@@ -18,6 +18,9 @@ class FilmViewModel() : ViewModel(), Serializable {
     var filmContentVisibility: Int = View.GONE
 
     @Transient
+    var star1selected: Boolean = false
+
+    @Transient
     var onChange: ChangeListener? = null
 
     /** Returns true if the ViewModel is loaded and has data */

@@ -23,6 +23,12 @@ class FilmActivity : AppCompatActivity(), ChangeListener {
         filmViewModel.onChange = this
         filmViewModel.loadDataIfNeeded()
         show(filmViewModel)
+
+        binding.button1.setOnClickListener {
+            filmViewModel.star1selected = binding.button1.isChecked
+
+            Log.d("Film1", "Star 1 checked? : ${filmViewModel.star1selected}")
+        }
     }
 
     private fun show(filmViewModel: FilmViewModel) {
@@ -35,6 +41,7 @@ class FilmActivity : AppCompatActivity(), ChangeListener {
         }
         binding.progressBar.visibility = filmViewModel.progressBarVisibility
         binding.filmContent.visibility = filmViewModel.filmContentVisibility
+        binding.button1.isChecked = filmViewModel.star1selected
     }
 
     override fun onDataChanged() {
