@@ -18,16 +18,16 @@ class MainActivity : AppCompatActivity(), ViewUpdate {
         viewModel.onViewUpdated = this
 
         bindings.plusAdult.setOnClickListener {
-            viewModel.antallVoksen++
+            viewModel.oppdaterAntalVoksen(viewModel.antallVoksen + 1)
         }
         bindings.plusChild.setOnClickListener {
-            viewModel.antallBarn++
+            viewModel.oppdaterAntalBarn(viewModel.antallBarn + 1)
         }
         bindings.minusAdult.setOnClickListener {
-            viewModel.antallVoksen = viewModel.antallVoksen - 1
+            viewModel.oppdaterAntalVoksen(viewModel.antallVoksen - 1)
         }
         bindings.minusChild.setOnClickListener {
-            viewModel.antallBarn--
+            viewModel.oppdaterAntalBarn(viewModel.antallBarn - 1)
         }
     }
 
