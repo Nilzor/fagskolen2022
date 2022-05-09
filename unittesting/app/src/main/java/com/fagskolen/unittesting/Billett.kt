@@ -10,7 +10,7 @@ class Billett(
      * Denne funksjonen gir svar på det
      */
     fun gjelderOmbordTillegg(): Boolean {
-        return false
+        return profil != Profil.Barn || fraSone == Sone.Sentrum
     }
 
     /**
@@ -18,7 +18,12 @@ class Billett(
      * "false" dersom billett kjøpt på forhånd.
      */
     fun prisKroner(ombord: Boolean): Int {
-        return 0
+        var pris = 20
+        if (profil == Profil.Barn) pris = 15
+        if (gjelderOmbordTillegg() && ombord) pris += 10
+        if (fraSone != tilSone) pris += 7
+        if (fraSone == Sone.Sentrum) pris += 5
+        return pris
     }
 }
 
