@@ -3,11 +3,11 @@ package com.fagskolen.mvvm
 import android.util.Log
 import android.view.View
 import androidx.lifecycle.*
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.io.Serializable
 
 
-class FilmViewModel() : ViewModel() {
+class FilmViewModel() : ViewModel(), Serializable {
     var title: String = ""
     var duration: String = ""
     var ageRating: String = ""
@@ -17,6 +17,10 @@ class FilmViewModel() : ViewModel() {
     var progressBarVisibility: Int = View.GONE
     var filmContentVisibility: Int = View.GONE
 
+    @Transient
+    var star1selected: Boolean = false
+
+    @Transient
     var onChange: ChangeListener? = null
 
     /** Returns true if the ViewModel is loaded and has data */
@@ -38,9 +42,7 @@ class FilmViewModel() : ViewModel() {
             progressBarVisibility = View.VISIBLE
             filmContentVisibility = View.GONE
 
-            delay(2000) // Vi later som om datakilden er treg
-
-            val filmModel = DataStorage.loadFilm()
+            val filmModel = DataStorage.loadFilm(1)
             Converters.filmModelToViewModel(filmModel, this@FilmViewModel)
 
             progressBarVisibility = View.GONE

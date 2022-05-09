@@ -1,13 +1,13 @@
 package com.fagskolen.mvvm
 
 import android.os.Bundle
-import androidx.activity.viewModels
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.fagskolen.mvvm.databinding.ActivityFilmBinding
 
 class FilmActivity : AppCompatActivity(), ChangeListener {
-    private val filmViewModel: FilmViewModel by viewModels()
 
+    private lateinit var filmViewModel: FilmViewModel
     private lateinit var binding: ActivityFilmBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,9 +16,19 @@ class FilmActivity : AppCompatActivity(), ChangeListener {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        val loadedFilmViewModel = savedInstanceState?.getSerializable("viewmodel") as? FilmViewModel?
+        Log.d("Film1", "viewModel loaded: $loadedFilmViewModel")
+        filmViewModel = loadedFilmViewModel ?: FilmViewModel()
+
         filmViewModel.onChange = this
         filmViewModel.loadDataIfNeeded()
         show(filmViewModel)
+
+        binding.button1.setOnClickListener {
+            filmViewModel.star1selected = binding.button1.isChecked
+
+            Log.d("Film1", "Star 1 checked? : ${filmViewModel.star1selected}")
+        }
     }
 
     private fun show(filmViewModel: FilmViewModel) {
@@ -31,9 +41,17 @@ class FilmActivity : AppCompatActivity(), ChangeListener {
         }
         binding.progressBar.visibility = filmViewModel.progressBarVisibility
         binding.filmContent.visibility = filmViewModel.filmContentVisibility
+        binding.button1.isChecked = filmViewModel.star1selected
     }
 
     override fun onDataChanged() {
         show(filmViewModel)
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        Log.d("Film1", "Saving viewmodel $filmViewModel")
+        outState.putSerializable("viewmodel", filmViewModel)
+        super.onSaveInstanceState(outState)
+        Log.d("Film1", "viewmodel saved")
     }
 }
