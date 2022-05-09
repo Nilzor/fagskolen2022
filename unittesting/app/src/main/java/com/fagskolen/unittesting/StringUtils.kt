@@ -3,6 +3,10 @@ package com.fagskolen.unittesting
 class StringUtils {
     val vowels = "aeiouyæøå"
 
+    fun cleanUpNameList(names: List<String>): List<String> {
+        return names
+    }
+
     fun toAlternatingCase(input: String): String {
         var result = ""
         for (i in input.indices) {

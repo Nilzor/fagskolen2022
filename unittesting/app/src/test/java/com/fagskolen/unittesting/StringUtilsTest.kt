@@ -98,4 +98,19 @@ internal class StringUtilsTest {
         val result = input.average()
         assertEquals(1.5, result, 0.1)
     }
+
+    @Test
+    fun cleanUpNames() {
+        val list = listOf<String>(
+            "Roger",
+            "Hans",
+            "Mina",
+            "Fredrik",
+            "Lene",
+            "Lene",
+            "Jakob",
+            "",
+            "Fredrik",
+        )
+    }
 }
