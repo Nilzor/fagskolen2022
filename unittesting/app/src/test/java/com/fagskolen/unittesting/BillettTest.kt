@@ -4,7 +4,7 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class BillettTest {
-    @Test
+    @Test(timeout = 100)
     fun `pris - voksenbillett fra sone Vest1 til Vest1 kjøpt på forhånd`() {
         val billett = Billett(Sone.Nord2, Sone.Nord2, Profil.Voksen)
         val pris = billett.prisKroner(false)

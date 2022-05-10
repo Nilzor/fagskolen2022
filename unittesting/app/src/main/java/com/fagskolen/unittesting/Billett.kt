@@ -1,6 +1,6 @@
 package com.fagskolen.unittesting
 
-class Billett(
+data class Billett(
     val fraSone: Sone,
     val tilSone: Sone,
     val profil: Profil
