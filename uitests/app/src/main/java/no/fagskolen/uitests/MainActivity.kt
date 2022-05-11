@@ -1,7 +1,9 @@
 package no.fagskolen.uitests
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.RadioButton
 import androidx.lifecycle.lifecycleScope
@@ -23,21 +25,28 @@ class MainActivity : AppCompatActivity() {
     private fun setupListeners() {
         setThreeSecondConnection(binding.buttonA, binding.radioA)
         setThreeSecondConnection(binding.buttonB, binding.radioB)
+        binding.nextButton.setOnClickListener {
+            startActivity(Intent(this, SecondActivity::class.java))
+        }
     }
 
     private fun setThreeSecondConnection(button: Button, radio: RadioButton) {
         button.setOnClickListener {
-            radio.isChecked = true
-            updateDependentState()
-            lifecycleScope.launch {
-                delay(3000)
-                radio.isChecked = false
+            if (button == binding.buttonB && !binding.radioA.isChecked) {
+
+            } else {
+                radio.isChecked = true
                 updateDependentState()
+                lifecycleScope.launch {
+                    delay(3000)
+                    radio.isChecked = false
+                    updateDependentState()
+                }
             }
         }
     }
 
     private fun updateDependentState() {
-        if (radio)
+        binding.nextButton.isEnabled = binding.radioA.isChecked && binding.radioB.isChecked
     }
 }

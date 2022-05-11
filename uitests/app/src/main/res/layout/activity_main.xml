@@ -33,8 +33,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:text="Trykk A først deretter B før du går videre"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="68dp" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/nextButton"
